@@ -18,24 +18,13 @@ namespace SeleniumDocker
             Driver.Navigate().GoToUrl("https://www.rambler.ru");
             Driver.Navigate().GoToUrl("https://www.google.com");
             Driver.Navigate().GoToUrl("https://www.youtube.com/houssemdellai");
-            Driver.Navigate().GoToUrl("https://www.youtube.com/houssemdellai");
             Driver.Navigate().GoToUrl("https://www.rambler.ru");
             Driver.Navigate().GoToUrl("https://www.google.com");
             Driver.Navigate().GoToUrl("https://www.youtube.com/houssemdellai");
-            Driver.Navigate().GoToUrl("https://www.youtube.com/houssemdellai");
             Driver.Navigate().GoToUrl("https://www.rambler.ru");
             Driver.Navigate().GoToUrl("https://www.google.com");
-            Driver.Navigate().GoToUrl("https://www.youtube.com/houssemdellai");
-            Driver.Navigate().GoToUrl("https://www.youtube.com/houssemdellai");
-            Driver.Navigate().GoToUrl("https://www.rambler.ru");
-            Driver.Navigate().GoToUrl("https://www.google.com");
-            Driver.Navigate().GoToUrl("https://www.youtube.com/houssemdellai");
-            Driver.Navigate().GoToUrl("https://www.youtube.com/houssemdellai");
-            Driver.Navigate().GoToUrl("https://www.rambler.ru");
-            Driver.Navigate().GoToUrl("https://www.google.com");
-            Driver.Navigate().GoToUrl("https://www.youtube.com/houssemdellai");
 
-            Assert.IsFalse(Driver.PageSource.Contains("Houss2222em Dellai"));
+            Assert.IsTrue(Driver.PageSource.Contains("Houss2222em Dellai"));
         }
     }
 }

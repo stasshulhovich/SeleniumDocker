@@ -13,6 +13,12 @@ namespace SeleniumDocker
         IE
     }
 
+    public class SelenoidOptions
+    {
+        public bool enableVnc = true;
+        public bool enableVideo = true;
+    }
+
     [TestFixture]
     public class Hooks : Base
     {
@@ -29,19 +35,35 @@ namespace SeleniumDocker
             ChooseWebDriver(_browserType);
         }
 
-        
+
         public void ChooseWebDriver(BrowserType browserType)
         {
+            // this part for Selenoid
             if (browserType == BrowserType.Chrome)
             {
+                var selenoidOptions = new SelenoidOptions();
                 var options = new ChromeOptions();
+                options.AddAdditionalOption("selenoid:options", selenoidOptions);
                 Driver = new RemoteWebDriver(new Uri("http://localhost:4444/wd/hub"), options);
             }
-            else
+            else if (browserType == BrowserType.Firefox)
             {
-                var options = new FirefoxOptions();
-                Driver = new RemoteWebDriver(new Uri("http://localhost:4444/wd/hub"), options);
+                var options2 = new FirefoxOptions();
+                options2.AddAdditionalOption("selenoid:options", new { enableVNC = true });
+                Driver = new RemoteWebDriver(new Uri("http://localhost:4444/wd/hub"), options2);
             }
+
+            // this part for selenium grid
+            //if (browserType == BrowserType.Chrome)
+            //{
+            //    var options = new ChromeOptions();
+            //    Driver = new RemoteWebDriver(new Uri("http://localhost:4444/wd/hub"), options);
+            //}
+            //else
+            //{
+            //    var options = new FirefoxOptions();
+            //    Driver = new RemoteWebDriver(new Uri("http://localhost:4444/wd/hub"), options);
+            //}
         }
 
         [TearDown]
